@@ -8,7 +8,7 @@ module.exports = {
               'mono': ['Fira Mono', 'monospace']
           },
           backgroundImage: theme => ({
-              
+            'home-background': "url('/images/home-background.jpg')"
           }), 
           backgroundColor: {
               'success': '#64ffda',
@@ -18,7 +18,7 @@ module.exports = {
               'dark--text': '#4D4D4D',
           },
           borderColor: theme => ({
-              'success': '#64ffda',
+              'warning': '#FFB500',
           }),
           fontSize: {
               'xm': '0.8rem',

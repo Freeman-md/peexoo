@@ -5,7 +5,7 @@
 
         <!-- Logo -->
         <div class="w-20">
-          <img src="@/assets/images/peexoo-logo.png" alt="Peexoo" />
+          <img src="/images/peexoo-logo.png" alt="Peexoo" />
         </div>
 
         <!-- Navigation Links -->
