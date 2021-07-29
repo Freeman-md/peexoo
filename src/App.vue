@@ -12,3 +12,9 @@ export default {
   components: { Header, }
 }
 </script>
+
+<style>
+#app {
+  font-family: 'Poppins', sans-serif;
+}
+</style>

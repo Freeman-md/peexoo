@@ -11,11 +11,14 @@ module.exports = {
             'home-background': "url('/images/home-background.jpg')"
           }), 
           backgroundColor: {
-              'success': '#64ffda',
+            'lighter': '#E4E4E4',
+            'warning--light': '#F29F05',
           },
           textColor: {
-              'warning--text': '#E39400',
-              'dark--text': '#4D4D4D',
+            'warning': '#E39400',
+            'warning--light': '#F29F05',
+            'dark': '#4D4D4D',
+            'secondary': '#919191'
           },
           borderColor: theme => ({
               'warning': '#FFB500',

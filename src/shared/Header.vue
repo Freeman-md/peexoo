@@ -9,7 +9,7 @@
         </div>
 
         <!-- Navigation Links -->
-        <div class="flex items-center justify-between w-1/2 text-sm font-semibold text-dark--text">
+        <div class="flex items-center justify-between w-1/2 text-sm font-semibold text-dark">
 
           <div class="flex items-center space-x-4">
             <router-link 
@@ -23,8 +23,8 @@
 
           <!-- Join Peexoo -->
           <div class="flex items-center space-x-1">
-            <span class="cursor-pointer text-warning--text">Join Peexoo</span>
-            <span class="fas fa-caret-down"></span>
+            <span class="cursor-pointer text-warning">Join Peexoo</span>
+            <span class="fas fa-caret-down text-secondary"></span>
           </div>
 
         </div>
