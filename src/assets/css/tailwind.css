@@ -3,3 +3,7 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.responsive-container {
+  @apply max-w-7xl mx-auto px-8 sm:px-10 xl:px-20;
+}

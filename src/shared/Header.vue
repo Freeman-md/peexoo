@@ -1,0 +1,53 @@
+<template>
+  <div class="shadow-md">
+    <div class="responsive-container">
+      <div class="flex items-center justify-between py-4">
+
+        <!-- Logo -->
+        <div class="w-20">
+          <img src="@/assets/images/peexoo-logo.png" alt="Peexoo" />
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="flex items-center justify-between w-1/2 text-sm font-semibold text-dark--text">
+
+          <div class="flex items-center space-x-4">
+            <router-link 
+              v-for="(link, index) in links"
+              :key="index"
+              :to="{name: link.name}"
+            >
+              {{ link.text }}
+            </router-link>
+          </div>
+
+          <!-- Join Peexoo -->
+          <div class="flex items-center space-x-1">
+            <span class="cursor-pointer text-warning--text">Join Peexoo</span>
+            <span class="fas fa-caret-down"></span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { reactive } from 'vue'
+export default {
+  name: 'Header',
+  setup() {
+    const links = reactive([
+      { text: 'Business Manager', name: 'Home' },
+      { text: 'MarketPlace', name: 'Home' },
+      { text: 'XooCam', name: 'Home' }
+    ])
+
+    return {
+      links
+    }
+  }
+}
+</script>
