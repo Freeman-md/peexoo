@@ -1,11 +1,13 @@
 <template>
-  <div class="p-4 bg-blue-500">
-    <h1>This is the pricing package page</h1>
+  <div class="p-4">
+    <PackageList />
   </div>
 </template>
 
 <script>
+import PackageList from '@/components/PackageList.vue'
 export default {
-  name: 'PricingPackage'
+  name: 'PricingPackage',
+  components: { PackageList }
 }
 </script>

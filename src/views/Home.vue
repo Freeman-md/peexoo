@@ -9,7 +9,7 @@
       <div class="flex flex-row-reverse pl-16">
         <div class="w-3/4">
 
-          <div class="flex flex-col py-4 space-y-2">
+          <div class="flex flex-col py-4 space-y-3">
             
             <!-- Tabs -->
             <Tabs />
