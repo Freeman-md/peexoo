@@ -1,5 +1,5 @@
 <template>
-  <div class="shadow-md">
+  <div class="fixed top-0 z-20 w-full bg-white shadow-md">
     <div class="responsive-container">
       <div class="flex items-center justify-between py-4">
 

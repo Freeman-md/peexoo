@@ -12,11 +12,6 @@ const routes = [
     component: Home,
     children: [
       {
-        path: '',
-        name: 'Home',
-        component: Portfolio
-      },
-      {
         path: 'portfolio',
         name: 'Portfolio',
         component: Portfolio

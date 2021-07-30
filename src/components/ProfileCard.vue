@@ -12,7 +12,7 @@
 
       <!-- Profile Picture -->
       <div class="w-24 h-24 mx-auto rounded-full">
-        <img src="/images/profile-picture.png" class="object-center w-24 h-24 rounded-full" />
+        <img src="/images/profile-picture.png" class="object-center w-24 h-24 rounded-full" @click.prevent="toggleModal" />
       </div>
 
       <!-- Name and Bio -->
@@ -93,16 +93,39 @@
 
     </div>
 
+    <transition name="modalBox">
+      <Modal v-show="showModal" :show="showModal">
+      
+        <template v-slot:header>
+          <button 
+            class="px-4 py-1.5 mt-4 text-xs text-white bg-white bg-opacity-10 rounded-3xl"
+            @click.prevent="toggleModal"
+          >
+            Close Image
+          </button>
+        </template>
+        
+        <template v-slot:modal>
+          <img src="/images/profile-picture-large.png" class="border-none rounded-full outline-none w-72 h-72" />
+        </template>
+      
+      </Modal>
+    </transition>
+
   </div>
 </template>
 
 <script>
-import { reactive, computed } from 'vue'
+import { reactive, ref } from 'vue'
 import { useStore } from 'vuex'
+import Modal from '@/components/Modal'
 export default {
   name: 'ProfileCard',
+  components: { Modal, },
   setup() {
     const store = useStore()
+    
+    const showModal = ref(false)
 
     const categories = reactive(['Food', 'Portrait', 'Wedding', 'Model'])
     const socials = reactive(['fab fa-facebook-f', 'fab fa-instagram', 'fas fa-envelope'])
@@ -111,15 +134,34 @@ export default {
       store.commit('toggleProfileCard')
     }
 
-    // const profileCard = computed(() => {
-    //   store.getters.getProfileCard
-    // })
+    const toggleModal = () => {
+      showModal.value = !showModal.value
+    }
 
     return {
       categories,
       socials,
-      toggleProfileCard
+      toggleProfileCard,
+      showModal,
+      toggleModal
     }
   }
 }
 </script>
+
+
+<style scoped>
+.modalBox-enter-active{
+  transition: ease-out 200ms;
+}   
+.modalBox-enter-from, .modalBox-leave-to {
+  opacity: 0;
+}
+.modalBox-enter-to, .modalBox-leave-from {
+  opacity: 100;
+}
+
+.modalBox-leave-active{
+  transition: ease-in 75ms;
+}
+</style>

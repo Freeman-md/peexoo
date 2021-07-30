@@ -29,6 +29,7 @@ module.exports = {
           },
           borderColor: theme => ({
               'warning': '#FFB500',
+              'warning--light': '#F29F05',
           }),
           fontSize: {
               'xm': '0.65rem',

@@ -11,11 +11,11 @@
           <span class="text-opacity-50 fa fa-caret-down text-lighter"></span>
         </div>
         <transition name="dropdown">
-          <div class="absolute right-0 z-40 flex flex-col items-end w-56 px-4 py-3 mt-0 space-y-2 origin-top-right bg-white rounded-md shadow-md " v-if="showDropdown">
+          <div class="absolute right-0 z-10 flex flex-col items-end w-56 px-4 py-3 mt-0 space-y-2 origin-top-right bg-white rounded-md shadow-md " v-if="showDropdown">
           <span
             v-for="(category, index) in categories"
             :key="index"
-            class="text-xs"
+            class="text-xs transition duration-200 cursor-pointer hover:text-dark"
             :class="{'text-dark': index !== 1, 'font-semibold': index === 1}"
           >
               {{ category }}
@@ -26,6 +26,7 @@
 
     </div>
     
+    <!-- Portfolio Images -->
     <transition name="images">
       <div class="grid grid-cols-3 gap-4">
         <a 
@@ -33,8 +34,7 @@
           :key="index"
           class="relative w-full rounded-lg shadow-md"
           :class="calculateSize(n)"
-          :href="`/images/foods/${n}.jpg`"
-          data-lightbox="home-images"
+          @click.prevent="setActiveImage(`/images/foods/${n}.jpg`)"
         >
 
           <!-- Like Image -->
@@ -76,22 +76,96 @@
         </a>
       </div>
     </transition>
+
+    <!-- Modal -->
+    <transition name="modalBox">
+      <Modal v-show="showModal" :show="showModal" @click.self="toggleModal">
+        
+        <template v-slot:modal>
+          <div class="flex flex-col items-center justify-center pt-6 space-y-20" @click.self="toggleModal">
+
+            <!-- Active Image -->
+            <div class="flex flex-col items-start w-1/2 rounded-t-md rounded-r-md h-96">
+              <img :src="activeImage" class="object-cover object-center w-full h-full rounded-t-md rounded-r-md" />
+              <!-- Image Information -->
+              <div class="flex items-center justify-around px-4 py-3 space-x-8 text-xs bg-white rounded-b-md ">
+
+                <div class="flex space-x-6">
+                  <!-- Activities -->
+                  <span
+                    class="flex items-center justify-center w-6 h-6 text-xs rounded-full far fa-heart bg-lighter"
+                  >
+                  </span>
+
+                  <span
+                    class="relative flex items-center justify-center w-6 h-6 text-xs rounded-full far fa-heart bg-lighter"
+                  >
+                    <span class="absolute w-4 h-0.5 -rotate-45 right-1 top-2.5 transform bg-black"></span>
+                  </span>
+                </div>
+                
+                <!-- Likes -->
+                <div class="flex items-center space-x-1">
+                  <span class="far fa-heart"></span>
+                  <span>{{ numberWithCommas(5349) }}</span>
+                </div>
+
+                <!-- Dislikes -->
+                <div class="flex items-center space-x-1">
+                  <span class="relative far fa-heart">
+                    <span class="absolute w-4 h-0.5 -rotate-45 -right-0.5 top-1 transform bg-black"></span>
+                  </span>
+                  <span>{{ numberWithCommas(23) }}</span>
+                </div>
+
+                <!-- Views -->
+                <div class="flex items-center space-x-1">
+                  <span class="relative far fa-eye">
+                    <span class="absolute w-4 h-0.5 -rotate-45 -right-0.5 top-1.5 transform bg-black"></span>
+                  </span>
+                  <span>{{ numberWithCommas(24023) }}</span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Image Gallery -->
+            <div class="flex w-full p-4 space-x-6 overflow-auto">
+              <img  
+                v-for="(n, index) in 20"
+                :key="index"
+                :src="`/images/foods/${n}.jpg`"
+                class="w-16 h-16 transition duration-200 transform rounded-md cursor-pointer hover:scale-125"
+                :class="{'scale-125 border border-warning--light': activeImage === `/images/foods/${n}.jpg`}"
+                @click.prevent="changeImage(`/images/foods/${n}.jpg`)"
+              />
+            </div>
+            
+          </div>
+        </template>
+      
+      </Modal>
+    </transition>
+
   </div>
 </template>
 
 <script>
 import { computed, reactive, ref } from 'vue'
 import { useStore } from 'vuex'
-import { useImages } from '@/composables/images'
 import { useFilters } from '@/composables/filters'
+
+import Modal from '@/components/Modal'
 export default {
   name: 'Portfolio',
+  components: {Modal,},
   setup() {
     const store = useStore()
 
     const showDropdown = ref(true)
-
-    const { images } = useImages()
+    const activeImage = ref(null)
+    const showModal = ref(false)
+    
     const { numberWithCommas } = useFilters()
 
     const categories = reactive([
@@ -114,14 +188,31 @@ export default {
 
     const profileCard = computed(() => store.getters.getProfileCard)
 
+    const setActiveImage = (image) => {
+      activeImage.value = image
+      toggleModal()
+    }
+
+    const changeImage = (image) => {
+      activeImage.value = image
+    }
+
+    const toggleModal = () => {
+      showModal.value = !showModal.value
+    }
+
     return {
-      showDropdown,
-      images,
+      showDropdown,      
       numberWithCommas,
       calculateSize,
       profileCard,
       categories,
-      toggleDropdown
+      toggleDropdown,
+      activeImage, 
+      setActiveImage,
+      showModal, 
+      toggleModal,
+      changeImage
     }
   }
 }
@@ -157,6 +248,20 @@ export default {
 }
 
 .images-leave-active{
+  transition: ease-in 75ms;
+}
+
+.modalBox-enter-active{
+  transition: ease-out 200ms;
+}   
+.modalBox-enter-from, .modalBox-leave-to {
+  opacity: 0;
+}
+.modalBox-enter-to, .modalBox-leave-from {
+  opacity: 100;
+}
+
+.modalBox-leave-active{
   transition: ease-in 75ms;
 }
 </style>

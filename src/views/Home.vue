@@ -46,6 +46,7 @@
 <script>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 import ProfileCard from '@/components/ProfileCard.vue'
 import Tabs from '@/components/Tabs.vue'
 export default {
@@ -53,12 +54,15 @@ export default {
   components: { ProfileCard, Tabs, },
   setup() {
     const store = useStore()
+    const router = useRouter()
 
     const profileCard = computed(() => store.getters.getProfileCard)
 
     const toggleProfileCard = () => {
       store.commit('toggleProfileCard')
     }
+
+    router.push({ name: 'Portfolio' })
 
     return {
       profileCard,
