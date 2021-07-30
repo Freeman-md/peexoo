@@ -15,6 +15,8 @@ module.exports = {
             'lighter': '#E4E4E4',
             'lightest': '#F4F4F4',
             'warning--light': '#F29F05',
+            'warning': '#FBA809',
+            'warning--lighter': '#FEF5E6'
           },
           textColor: {
             'warning': '#E39400',
@@ -22,7 +24,8 @@ module.exports = {
             'dark': '#4D4D4D',
             'secondary': '#919191',
             'light': '#C9C9C9',
-            'muted': '#4D4D4D'
+            'muted': '#4D4D4D',
+            'ligher': '#707070'
           },
           borderColor: theme => ({
               'warning': '#FFB500',

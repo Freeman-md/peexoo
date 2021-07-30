@@ -1,13 +1,18 @@
 <template>
   <div class="absolute w-1/4 px-6 pt-8 pb-6 bg-white border rounded-md border-opacity-40 border-warning top-7 left-7">
 
-    <button class="absolute text-xs font-medium top-2 right-2 text-warning">Hide</button>
+    <button 
+      class="absolute text-xs font-medium top-2 right-2 text-warning"
+      @click.prevent="toggleProfileCard"
+    >
+      Hide
+    </button>
     
     <div class="flex flex-col space-y-4">
 
       <!-- Profile Picture -->
       <div class="w-24 h-24 mx-auto rounded-full">
-        <img src="/images/profile-picture.jpg" class="object-center w-24 h-24 rounded-full" />
+        <img src="/images/profile-picture.png" class="object-center w-24 h-24 rounded-full" />
       </div>
 
       <!-- Name and Bio -->
@@ -93,15 +98,27 @@
 
 <script>
 import { reactive, computed } from 'vue'
+import { useStore } from 'vuex'
 export default {
   name: 'ProfileCard',
   setup() {
+    const store = useStore()
+
     const categories = reactive(['Food', 'Portrait', 'Wedding', 'Model'])
     const socials = reactive(['fab fa-facebook-f', 'fab fa-instagram', 'fas fa-envelope'])
 
+    const toggleProfileCard = () => {
+      store.commit('toggleProfileCard')
+    }
+
+    // const profileCard = computed(() => {
+    //   store.getters.getProfileCard
+    // })
+
     return {
       categories,
-      socials
+      socials,
+      toggleProfileCard
     }
   }
 }

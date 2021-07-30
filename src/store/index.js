@@ -2,6 +2,7 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
+    profileCard: true,
     packages: [
       {
         id: 1,
@@ -57,13 +58,17 @@ export default createStore({
         price: 10000,
         amount: 20000
       },
-    ]
+    ],
   },
   getters: {
-    getPackages: (state) => state.packages,
-    getPackageItems: (state) => state.packageItems
+    getProfileCard: state => state.profileCard,
+    getPackages: state => state.packages,
+    getPackageItems: state => state.packageItems
   },
   mutations: {
+    toggleProfileCard: (state) => {
+      state.profileCard = !state.profileCard
+    }
   },
   actions: {
   },
