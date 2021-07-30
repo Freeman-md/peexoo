@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute px-6 pt-8 pb-6 bg-white border rounded-md border-opacity-40 border-warning w-80 top-7 left-7">
+  <div class="absolute w-1/4 px-6 pt-8 pb-6 bg-white border rounded-md border-opacity-40 border-warning top-7 left-7">
 
     <button class="absolute text-xs font-medium top-2 right-2 text-warning">Hide</button>
     
@@ -95,7 +95,7 @@
 import { reactive, computed } from 'vue'
 export default {
   name: 'ProfileCard',
-  setup(props) {
+  setup() {
     const categories = reactive(['Food', 'Portrait', 'Wedding', 'Model'])
     const socials = reactive(['fab fa-facebook-f', 'fab fa-instagram', 'fas fa-envelope'])
 
