@@ -11,20 +11,24 @@ module.exports = {
             'home-background': "url('/images/home-background.jpg')"
           }), 
           backgroundColor: {
+            'light': '#00000029',
             'lighter': '#E4E4E4',
+            'lightest': '#F4F4F4',
             'warning--light': '#F29F05',
           },
           textColor: {
             'warning': '#E39400',
             'warning--light': '#F29F05',
             'dark': '#4D4D4D',
-            'secondary': '#919191'
+            'secondary': '#919191',
+            'light': '#C9C9C9',
+            'muted': '#4D4D4D'
           },
           borderColor: theme => ({
               'warning': '#FFB500',
           }),
           fontSize: {
-              'xm': '0.8rem',
+              'xm': '0.65rem',
               'smallest': '0.5rem'
           },
           screens: {

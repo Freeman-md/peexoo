@@ -20,7 +20,7 @@ export default {
     const tabs = reactive([
       { text: 'Portfolio', routeName: 'Portfolio' },
       { text: 'Availability', routeName: 'Availability' },
-      { text: 'Pricing Package', routeName: 'Pricing Package' },
+      { text: 'Pricing Package', routeName: 'Pricing Packages' },
     ])
 
     return { tabs }

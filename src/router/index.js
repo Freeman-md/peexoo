@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
 import Portfolio from '@/views/Portfolio.vue'
 import Availability from '@/views/Availability.vue'
-import PricingPackage from '@/views/PricingPackage.vue'
+import PackageList from '@/views/PackageList.vue'
+import PackageDetails from '@/views/PackageDetails.vue'
 
 const routes = [
   {
@@ -10,6 +11,11 @@ const routes = [
     name: 'Home',
     component: Home,
     children: [
+      {
+        path: '',
+        name: 'Home',
+        component: Portfolio
+      },
       {
         path: 'portfolio',
         name: 'Portfolio',
@@ -21,9 +27,14 @@ const routes = [
         component: Availability
       },
       {
-        path: 'pricing-package/:details?',
+        path: 'pricing-packages',
+        name: 'Pricing Packages',
+        component: PackageList
+      },
+      {
+        path: 'pricing-packages/:id',
         name: 'Pricing Package',
-        component: PricingPackage
+        component: PackageDetails
       },
     ]
   },

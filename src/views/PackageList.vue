@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="p-4">
     <table class="items-center w-full bg-transparent border-collapse">
       <thead>
         <tr class="bg-warning--light bg-opacity-10">
@@ -24,10 +24,12 @@
         <tr
           v-for="(packageItem, index) in packages"
           :key="index"
+          @click.prevent="goToDetails(packageItem.id)"
+          class="transition duration-200 cursor-pointer drop-shadow-md hover:bg-lighter"
         >
-            <th class="text-left" :class="tbodyClasses">
+            <td class="text-left" :class="tbodyClasses">
               {{ packageItem.title }}
-            </th>
+            </td>
             <td :class="tbodyClasses">
               {{ packageItem.category }}
             </td>
@@ -38,7 +40,7 @@
               {{ packageItem.createdAt }}
             </td>
             <td :class="tbodyClasses">
-              {{ packageItem.amount }}
+              {{ formatNumber(packageItem.amount) }}
             </td>
         </tr>
       </tbody>
@@ -49,19 +51,28 @@
 <script>
 import { reactive, ref } from 'vue'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
+import { useFilters } from '@/composables/filters'
 export default {
   name: 'PackageList',
   setup() {
     const store = useStore()
+    const router = useRouter()
+
+    const { formatNumber } = useFilters()
     
     const packages = reactive(store.getters.getPackages)
-    const theadClasses = ref('px-6 py-3 text-xs font-semibold text-left uppercase align-middle whitespace-nowrap')
+    const theadClasses = ref('px-6 py-3 text-xs font-semibold tracking-wider text-left align-middle whitespace-nowrap')
     const tbodyClasses = ref('p-4 px-6 text-xs align-middle whitespace-nowrap')
+
+    const goToDetails = (id) => router.push({name: 'Pricing Package', params: { id }})
 
     return {
       packages,
       theadClasses, 
-      tbodyClasses
+      tbodyClasses,
+      goToDetails,
+      formatNumber
     }
   }
 }
