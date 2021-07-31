@@ -13,9 +13,8 @@
     "postcss": "^7",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
     "vue": "^3.0.0",
-    "vue-live": "^2.0.0-beta.2",
     "vue-router": "^4.0.0-0",
-    "vue-silentbox": "^2.4.5",
+    "vuetify": "^2.5.8",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
