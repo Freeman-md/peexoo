@@ -16,7 +16,8 @@ module.exports = {
             'lightest': '#F4F4F4',
             'warning--light': '#F29F05',
             'warning': '#FBA809',
-            'warning--lighter': '#FEF5E6'
+            'warning--lighter': '#FEF5E6',
+            'bg-color': '#FFFDF7'
           },
           textColor: {
             'warning': '#E39400',

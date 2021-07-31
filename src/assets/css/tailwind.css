@@ -10,6 +10,10 @@
   @apply max-w-7xl mx-auto px-2
 }
 
+.bg-color {
+  background-color: #FFFDF7;
+}
+
 ::-webkit-scrollbar {
   width: 1px;
 }

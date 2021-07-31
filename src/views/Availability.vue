@@ -5,7 +5,17 @@
 </template>
 
 <script>
+import { reactive } from 'vue'
+
 export default {
-  name: 'Availability'
+  name: 'Availability',
+  components: { },
+  setup() {
+    const startDate = reactive(new Date())
+
+    return {
+      startDate
+    }
+  }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4">
+  <div class="p-4 bg-bg-color">
     <div class="relative w-full h-screen">
       <div class="w-full h-32 bg-center bg-no-repeat bg-cover rounded-md bg-home-background"></div>
 

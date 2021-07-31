@@ -1,6 +1,6 @@
 <template>
-  <div class="">
-    <div class="flex px-4 space-x-3 bg-white " :class="{'flex-grow text-center justify-center': !profileCard}">
+  <div :class="{'flex-grow text-center justify-center': !profileCard}">
+    <div class="flex px-4 space-x-3 bg-white ">
       <router-link
         v-for="(tab, index) in tabs"
         :key="index"
