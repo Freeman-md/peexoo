@@ -1,6 +1,7 @@
 <template>
-  <div class="p-4">
-    <table class="items-center w-full bg-transparent border-collapse">
+  <div class="p-4 overflow-x-auto">
+    <div class="w-full overflow-x-auto">
+      <table class="items-center w-full bg-transparent border-collapse">
       <thead>
         <tr class="bg-warning--light bg-opacity-10">
           <th :class="theadClasses">
@@ -44,7 +45,8 @@
             </td>
         </tr>
       </tbody>
-    </table>
+      </table>
+    </div>
   </div>
 </template>
 

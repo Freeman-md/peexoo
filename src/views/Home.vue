@@ -8,14 +8,14 @@
         <ProfileCard v-if="profileCard" />
       </transition>
       
-      <div class="flex" :class="{'flex-row-reverse pl-16': profileCard}">
-        <div :class="{'w-3/4': profileCard, 'w-full': !profileCard}">
+      <div class="flex" :class="{'flex-row-reverse lg:pl-16': profileCard}">
+        <div :class="{'lg:w-3/4': profileCard, 'w-full': !profileCard}">
 
           <div class="flex flex-col py-4 space-y-3">
             
             <!-- Tabs -->
             <div class="flex items-center justify-between" :class="{'px-8': !profileCard}">
-              <div class="flex space-x-2" v-show="!profileCard">
+              <div class="hidden space-x-2 lg:flex" v-show="!profileCard">
                 <img class="w-10 h-10 rounded-full" src="/images/profile-picture.png" />
                 <button 
                   class="text-xs font-medium text-warning" 

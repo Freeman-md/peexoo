@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute w-1/4 px-6 pt-8 pb-6 bg-white border rounded-md border-opacity-40 border-warning top-7 left-7">
+  <div class="fixed bottom-0 right-0 z-30 px-6 pt-8 pb-6 origin-top-right bg-white border rounded-md lg:bottom-auto lg:pb-0 lg:z-0 lg:w-1/4 top-16 lg:absolute border-opacity-40 border-warning lg:top-7 lg:left-7">
 
     <button 
       class="absolute text-xs font-medium top-2 right-2 text-warning"
@@ -17,7 +17,7 @@
 
       <!-- Name and Bio -->
       <div class="flex flex-col items-center justify-center">
-        <h1 class="text-2xl font-semibold">Ekemini Mark</h1>
+        <h1 class="text-2xl font-semibold text-center">Ekemini Mark</h1>
         <p class="text-xs text-center">
           I’m a wedding and portrait photographer based in Lagos, Nigeria. I’ve been shooting weddings since I was in high school (before I ever had my driver’s license!).
         </p>
@@ -42,7 +42,7 @@
         </div>
 
         <!-- Camera Lens -->
-        <div class="flex flex-col items-start">
+        <div class="flex flex-col items-start col-span-2 md:col-span-1">
           <span class="text-sm font-semibold">Sony 92J</span>
           <span class="text-xs text-dark">Camera Lens</span>
         </div>
@@ -82,12 +82,12 @@
           class="flex items-center justify-center w-6 h-6 text-xs rounded-full bg-lighter"
           :class="social"
         >
-        </span>
-        <router-link to="/" class="px-4 py-1.5 text-xs text-white bg-warning--light rounded-3xl">Book Now</router-link>
+        </span>        
+        <router-link to="/" class="px-4 py-1.5 text-center text-xs text-white bg-warning--light rounded-3xl">Book Now</router-link>
       </div>
 
       <!-- Built By -->
-      <div class="flex items-center justify-center pt-6 text-xs">
+      <div class="flex items-center justify-center pt-6 pb-6 text-xs">
         Built &nbsp;<span class="text-warning--light">&hearts;</span>&nbsp; on Peexoo
       </div>
 

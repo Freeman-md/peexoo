@@ -27,9 +27,15 @@
     </div>
     
     <!-- Portfolio Images -->
-    <transition name="images">
-      <div class="grid grid-cols-3 gap-4">
-        <a 
+    <transition name="imageBox">
+      <div class="grid sm:grid-cols-3 sm:gap-4 2xs:gap-6 xs:gap-6 xs:grid-cols-2 2xs:grid-cols-2 lg:gap-4 lg:grid-cols-3" :class="{'md:grid-cols-3 md:gap-4 xl:grid-cols-4 xl:gap-4': !profileCard}">
+        <transition-group 
+          appear
+          name="images"
+          @before-enter="beforeEnter"
+          @enter="enter"
+        >
+          <a 
           v-for="(n, index) in 20" 
           :key="index"
           class="relative w-full rounded-lg shadow-md"
@@ -41,7 +47,7 @@
           <button class="absolute p-2 text-white rounded-full fas fa-heart bg-warning right-2 top-2"></button>
 
           <!-- Image Information -->
-          <div class="absolute inset-x-0 bottom-0 flex items-center justify-around px-2 py-4 text-sm bg-white">
+          <div class="absolute inset-x-0 bottom-0 items-center justify-around hidden px-2 py-4 text-sm bg-white sm:flex">
             
             <!-- Likes -->
             <div class="flex items-center space-x-1">
@@ -73,7 +79,8 @@
             class="object-cover object-center w-full h-full rounded-lg"
           />
           
-        </a>
+          </a>
+        </transition-group>
       </div>
     </transition>
 
@@ -82,10 +89,10 @@
       <Modal v-show="showModal" :show="showModal" @click.self="toggleModal">
         
         <template v-slot:modal>
-          <div class="flex flex-col items-center justify-center pt-6 space-y-20" @click.self="toggleModal">
+          <div class="flex flex-col items-center justify-center px-4 pt-6 space-y-20 sm:px-0" @click.self="toggleModal">
 
             <!-- Active Image -->
-            <div class="flex flex-col items-start w-1/2 rounded-t-md rounded-r-md h-96">
+            <div class="flex flex-col items-center sm:items-start md:3/5 sm:3/4 lg:w-1/2 rounded-t-md rounded-r-md h-96">
               <img :src="activeImage" class="object-cover object-center w-full h-full rounded-t-md rounded-r-md" />
               <!-- Image Information -->
               <div class="flex items-center justify-around px-4 py-3 space-x-8 text-xs bg-white rounded-b-md ">
@@ -154,6 +161,7 @@
 import { computed, reactive, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useFilters } from '@/composables/filters'
+import { gsap } from 'gsap'
 
 import Modal from '@/components/Modal'
 export default {
@@ -178,7 +186,7 @@ export default {
           return 'row-span-2'
         }
       } else {
-        return 'h-56'
+        return !profileCard ? 'lg:w-72 h-56' : 'h-56'
       }
     }
 
@@ -201,6 +209,20 @@ export default {
       showModal.value = !showModal.value
     }
 
+    const beforeEnter = (el) => {
+      el.style.opacity = 0;
+      el.style.transform = "scale(1)";
+    }
+
+    const enter = (el, done) => {
+      gsap.to(el, {
+        opacity: 1,
+        duration: 0.8,
+        onComplete: done,
+        delay: el.dataset.index * 0.2
+      })
+    }
+
     return {
       showDropdown,      
       numberWithCommas,
@@ -212,42 +234,42 @@ export default {
       setActiveImage,
       showModal, 
       toggleModal,
-      changeImage
+      changeImage,
+      enter, 
+      beforeEnter
     }
   }
 }
 </script>
 
 <style scoped>
-.dropdown-enter-active{
+.dropdown-enter-active, 
+.imageBox-enter-active, 
+.images-enter-active {
   transition: ease-out 200ms;
 }   
-.dropdown-enter-from, .dropdown-leave-to {
+.dropdown-enter-from,
+.dropdown-leave-to, 
+.imageBox-enter-from, 
+.imageBox-leave-to,
+.images-enter-from, 
+.images-leave-to  {
   transform: scale(0.9);
   opacity: 0;
 }
-.dropdown-enter-to, .dropdown-leave-from {
+.dropdown-enter-to, 
+.dropdown-leave-from, 
+.imageBox-enter-to, 
+.imageBox-leave-from,
+.images-enter-to, 
+.images-leave-from {
   transform: scale(1);
   opacity: 100;
 }
 
-.dropdown-leave-active{
-  transition: ease-in 75ms;
-}
-
-.images-enter-active{
-  transition: ease-out 200ms;
-}   
-.images-enter-from, .dropdown-leave-to {
-  transform: scale(0.9);
-  opacity: 0;
-}
-.images-enter-to, .dropdown-leave-from {
-  transform: scale(1);
-  opacity: 100;
-}
-
-.images-leave-active{
+.dropdown-leave-active, 
+.imageBox-leave-active,
+.images-leave-active {
   transition: ease-in 75ms;
 }
 
