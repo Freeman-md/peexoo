@@ -1,4 +1,4 @@
-# agcomfy
+# Peexoo
 
 ## Project setup
 ```
