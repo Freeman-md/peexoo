@@ -28,7 +28,7 @@
               <span class="fas fa-caret-down text-secondary"></span>
             </div>
             <transition name="dropdown">
-              <div class="absolute right-0 z-10 flex flex-col items-start w-32 px-4 py-3 mt-4 space-y-2 origin-top-right bg-white rounded-md shadow-md " v-if="showDropdown">
+              <div class="absolute right-0 z-40 flex flex-col items-start w-32 px-4 py-3 mt-4 space-y-2 origin-top-right bg-white rounded-md shadow-md " v-if="showDropdown">
               <span class="text-xs transition duration-200 cursor-pointer hover:text-dark">
                 Log In
               </span>

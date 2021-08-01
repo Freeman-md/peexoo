@@ -14,7 +14,7 @@
           <div class="flex flex-col py-4 space-y-3">
             
             <!-- Tabs -->
-            <div class="flex items-center justify-between" :class="{'px-8': !profileCard}">
+            <div class="sticky z-30 flex items-center justify-between py-2 bg-white top-12" :class="{'px-12 -mx-4': !profileCard}">
               <div class="hidden space-x-2 md:flex" v-show="!profileCard">
                 <img class="w-10 h-10 rounded-full" src="/images/profile-picture.png" />
                 <button 

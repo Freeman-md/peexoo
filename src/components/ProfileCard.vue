@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed bottom-0 right-0 z-30 px-6 pt-8 pb-6 origin-top-right bg-white border rounded-md lg:bottom-auto lg:pb-0 lg:z-0 lg:w-1/4 top-16 lg:absolute border-opacity-40 border-warning lg:top-7 lg:left-7">
+  <div class="fixed bottom-0 right-0 z-50 px-6 pt-8 pb-6 origin-top-right bg-white border rounded-md lg:bottom-auto lg:pb-0 lg:z-0 lg:w-1/4 top-16 border-opacity-40 xl:fixed lg:absolute lg:top-7 lg:left-7 border-warning xl:top-24 xl:left-10">
 
     <button 
       class="absolute text-xs font-medium top-2 right-2 text-warning"
@@ -87,7 +87,7 @@
       </div>
 
       <!-- Built By -->
-      <div class="flex items-center justify-center pt-6 pb-6 text-xs">
+      <div class="flex items-center justify-center pt-6 pb-4 text-xs">
         Built &nbsp;<span class="text-warning--light">&hearts;</span>&nbsp; on Peexoo
       </div>
 

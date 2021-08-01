@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed inset-0 z-30 flex flex-col items-center justify-between p-4 bg-black bg-opacity-90">
+  <div class="fixed inset-0 z-50 flex flex-col items-center justify-between p-4 bg-black bg-opacity-90">
     <slot name="header"></slot>
     <transition name="modal">
       <slot name="modal" v-if="show"></slot>
