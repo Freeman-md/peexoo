@@ -1,5 +1,5 @@
 <template>
-  <div class="flex px-4 space-x-3" :class="{'flex-grow items-center justify-center bg-white': !profileCard}">
+  <div class="flex px-4 space-x-3" :class="{'w-full md:w-auto md:flex-grow items-center justify-center bg-white': !profileCard}">
     <router-link
       v-for="(tab, index) in tabs"
       :key="index"

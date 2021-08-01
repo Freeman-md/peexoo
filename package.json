@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vite preview",
-    "build": "vite build",
-    "dev": "vite"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@mathieustan/vue-datepicker": "^0.2.11",
+    "@popperjs/core": "^2.9.2",
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "autoprefixer": "^9",
     "core-js": "^3.6.5",
@@ -16,6 +17,7 @@
     "litepie-datepicker": "^1.0.14",
     "postcss": "^7",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
+    "v-calendar": "^3.0.0-alpha.5",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuetify": "^3.0.0-alpha.0",

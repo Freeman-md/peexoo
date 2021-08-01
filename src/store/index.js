@@ -2,7 +2,7 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    profileCard: true,
+    profileCard: window.innerWidth < 1024 ? false : true,
     packages: [
       {
         id: 1,

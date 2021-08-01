@@ -15,7 +15,7 @@
             
             <!-- Tabs -->
             <div class="flex items-center justify-between" :class="{'px-8': !profileCard}">
-              <div class="hidden space-x-2 lg:flex" v-show="!profileCard">
+              <div class="hidden space-x-2 md:flex" v-show="!profileCard">
                 <img class="w-10 h-10 rounded-full" src="/images/profile-picture.png" />
                 <button 
                   class="text-xs font-medium text-warning" 

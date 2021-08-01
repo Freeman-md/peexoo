@@ -1,12 +1,7 @@
 <template>
   <div class="flex flex-col items-start w-full p-4 space-y-2">
-    <litepie-datepicker
-      as-single
-      use-range
-      overlay
-      :formatter="formatter"
-      v-model="startDate"
-    ></litepie-datepicker>
+    <DatePicker v-model="date" is-range color="orange" :attributes="attrs" />
+    
     <div class="flex flex-col space-y-2">
       
       <!-- Item -->
@@ -28,25 +23,69 @@
       </div>
       
     </div>
+
   </div>
 </template>
 
 <script>
 import { reactive } from 'vue'
-import LitepieDatepicker from 'litepie-datepicker';
+import { DatePicker } from 'v-calendar';
 export default {
   name: 'Availability',
-  components: { LitepieDatepicker },
+  components: { DatePicker },
   setup() {
-    const startDate = reactive([])
-    const formatter = reactive({
-      date: 'DD MMM YYYY',
-      month: 'MMM'
-    })
+    const date = reactive(new Date())
+    const attrs = reactive([
+      {
+        highlight: {
+          start: { 
+            fillMode: 'solid', 
+            style: {
+              background: '#F29F05'
+            },
+            contentStyle: {
+              color: 'white'
+            }, 
+          },
+          base: { 
+            fillMode: 'solid', 
+            style: {
+              background: '#F29F05'
+            },
+            contentStyle: {
+              color: 'white'
+            }, 
+          },
+          end: { 
+            fillMode: 'solid', 
+            style: {
+              background: '#F29F05'
+            },
+            contentStyle: {
+              color: 'white'
+            }, 
+          },
+        },
+        dates: { start: new Date(2021, 7, 11), end: new Date(2021, 7, 19) },
+      },
+      {
+        key: 'today',
+        highlight: {
+          style: {
+            background: '#F29F05'
+          },
+          contentStyle: {
+            color: 'white'
+          },
+          contentClass: 'italic',
+        },
+        dates: new Date(),
+      },
+    ])
 
     return {
-      startDate,
-      formatter
+      attrs,
+      date
     }
   }
 }

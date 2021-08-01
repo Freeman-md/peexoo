@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { reactive, ref } from 'vue'
+import { reactive, ref, computed } from 'vue'
 import { useStore } from 'vuex'
 export default {
   name: 'Header',
@@ -67,6 +67,8 @@ export default {
       { text: 'XooCam', name: 'Home' }
     ])
 
+    const profileCard = computed(() => store.getters.getProfileCard)
+
     const toggleDropdown = () => {
       showDropdown.value = !showDropdown.value
     }
@@ -79,7 +81,8 @@ export default {
       links, 
       showDropdown, 
       toggleDropdown,
-      toggleProfileCard
+      toggleProfileCard,
+      profileCard
     }
   }
 }
