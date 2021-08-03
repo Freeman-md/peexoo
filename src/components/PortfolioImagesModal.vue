@@ -3,7 +3,7 @@
     <Modal v-show="show" :show="show" @click.self="toggleModal">
       
       <template v-slot:modal>
-        <div class="flex flex-col items-center justify-center px-4 pt-6 space-y-20 sm:px-0" @click.self="toggleModal">
+        <div class="flex flex-col items-center justify-center px-4 pt-6 space-y-16 sm:px-0" @click.self="toggleModal">
 
           <!-- Active Image -->
           <div class="flex flex-col items-center sm:items-start md:3/5 sm:3/4 lg:w-1/2 rounded-t-md rounded-r-md h-96">

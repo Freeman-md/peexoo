@@ -5,8 +5,17 @@
 
       <!-- Profile Card -->
       <transition name="profileCard">
-        <ProfileCard v-if="profileCard" />
+        <ProfileCard 
+          v-if="profileCard" 
+          @toggleModal="toggleModal" 
+        />
       </transition>
+
+      <!-- Profile Modal -->
+      <ProfileModal 
+        :showModal="showModal" 
+        @closeModal="toggleModal" 
+      />
       
       <div class="flex" :class="{'flex-row-reverse lg:pl-16': profileCard}">
         <div :class="{'lg:w-3/4': profileCard, 'w-full': !profileCard}">
@@ -44,17 +53,20 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import ProfileCard from '@/components/ProfileCard.vue'
+import ProfileModal from '@/components/ProfileModal.vue'
 import Tabs from '@/components/Tabs.vue'
 export default {
   name: 'Home',
-  components: { ProfileCard, Tabs, },
+  components: { ProfileCard, Tabs, ProfileModal },
   setup() {
     const store = useStore()
     const router = useRouter()
+
+    const showModal = ref(false)
 
     const profileCard = computed(() => store.getters.getProfileCard)
 
@@ -62,11 +74,17 @@ export default {
       store.commit('toggleProfileCard')
     }
 
+    const toggleModal = () => {
+      showModal.value = !showModal.value
+    }
+
     router.push({ name: 'Portfolio' })
 
     return {
       profileCard,
-      toggleProfileCard
+      toggleProfileCard,
+      showModal,
+      toggleModal
     }
   }
 }

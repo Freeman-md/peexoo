@@ -5,8 +5,8 @@
       <slot name="modal" v-if="show"></slot>
     </transition>
     <slot name="footer">
-      <div class="flex items-center justify-center pt-6 text-xs text-white">
-        Built for free &nbsp;<span class="text-warning--light">&hearts;</span>&nbsp; on Peexoo
+      <div class="flex items-center justify-center pt-0 text-xs text-white">
+        Built for free &nbsp;<span class="text-smallest text-warning--light fa fa-heart"></span>&nbsp; on Peexoo
       </div>
     </slot>
   </div>

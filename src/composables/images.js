@@ -7,7 +7,7 @@ export const useImages = (ctx, profileCard) => {
         return 'row-span-2'
       }
     } else {
-      return !profileCard ? 'lg:w-72 h-56' : 'h-56'
+      return !profileCard ? 'w-72 h-56' : 'h-56'
     }
   }
 

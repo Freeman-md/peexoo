@@ -93,39 +93,16 @@
 
     </div>
 
-    <transition name="modalBox">
-      <Modal v-show="showModal" :show="showModal">
-      
-        <template v-slot:header>
-          <button 
-            class="px-4 py-1.5 mt-4 text-xs text-white bg-white bg-opacity-10 rounded-3xl"
-            @click.prevent="toggleModal"
-          >
-            Close Image
-          </button>
-        </template>
-        
-        <template v-slot:modal>
-          <img src="/images/profile-picture-large.png" class="border-none rounded-full outline-none w-72 h-72" />
-        </template>
-      
-      </Modal>
-    </transition>
-
   </div>
 </template>
 
 <script>
 import { reactive, ref } from 'vue'
 import { useStore } from 'vuex'
-import Modal from '@/components/Modal'
 export default {
   name: 'ProfileCard',
-  components: { Modal, },
-  setup() {
+  setup(props, ctx) {
     const store = useStore()
-    
-    const showModal = ref(false)
 
     const categories = reactive(['Food', 'Portrait', 'Wedding', 'Model'])
     const socials = reactive(['fab fa-facebook-f', 'fab fa-instagram', 'fas fa-envelope'])
@@ -135,14 +112,13 @@ export default {
     }
 
     const toggleModal = () => {
-      showModal.value = !showModal.value
+      ctx.emit('toggleModal')
     }
 
     return {
       categories,
       socials,
       toggleProfileCard,
-      showModal,
       toggleModal
     }
   }

@@ -29,6 +29,7 @@ export default createStore({
         amount: '45000'
       },
       {
+        id: 4,
         title: 'Cullnary Photography',
         category: 'Food',
         items: 18,
