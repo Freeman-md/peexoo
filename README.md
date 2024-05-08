@@ -18,31 +18,22 @@ Repository Contents
 Project Setup
 -------------
 
-bash
 
-Copy code
+  **Install dependencies**
+  ```bash
+  yarn install
+  ```
 
-`yarn install`
+  **Compiles and Hot-reloads for Development**
+  ```bash
+  yarn serve
+  ```
 
-### Compiles and Hot-reloads for Development
+  **Compiles and Minifies for Production**
+  ```bash
+  yarn build
+  ```
 
-bash
-
-Copy code
-
-`yarn serve`
-
-### Compiles and Minifies for Production
-
-bash
-
-Copy code
-
-`yarn build`
-
-### Customize Configuration
-
-See Configuration Reference.
 
 Features
 --------
